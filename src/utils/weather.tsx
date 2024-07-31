@@ -11,12 +11,12 @@ export const imageCodes: Array<any> = [
   },
   {
     image: "Weather=Few clouds, Moment=Day.svg",
-    codes: [1003],
+    codes: [1003, 1150],
     clock: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
   },
   {
     image: "Weather=Few clouds, Moment=Night.svg",
-    codes: [1003],
+    codes: [1003, 1150],
     clock: [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6]
   },
   {
@@ -31,12 +31,12 @@ export const imageCodes: Array<any> = [
   },
   {
     image: "Weather=Cloudy, Moment=Day.svg",
-    codes: [1009],
+    codes: [1009,1030],
     clock: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
   },
   {
     image: "Weather=Cloudy, Moment=Night.svg",
-    codes: [1009],
+    codes: [1009,1030],
     clock: [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6]
   },
   {
@@ -86,12 +86,12 @@ export const weatherBg: Array<any> = [
     },
     {
         "image": "Weather=Few Clouds, Moment=Day.png",
-        "codes": [1003],
+        "codes": [1003,1030],
         "clock": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     },
     {
         "image": "Weather=Few Clouds, Moment=Night.png",
-        "codes": [1003],
+        "codes": [1003,1030],
         "clock": [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6]
     },
     {
@@ -126,12 +126,12 @@ export const weatherBg: Array<any> = [
     },
     {
         "image": "Weather=Storm, Moment=Day.png",
-        "codes": [1087],
+        "codes": [1087,1030],
         "clock": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     },
     {
         "image": "Weather=Storm, Moment=Night.png",
-        "codes": [1087],
+        "codes": [1087,1030],
         "clock": [19, 20, 21, 22, 23, 0, 1, 2, 3, 4, 5, 6]
     }
 ]
