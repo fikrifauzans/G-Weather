@@ -7,6 +7,7 @@ import { getWeather } from "../redux/slices/weatherSlice";
 import { formatDate } from "../helper/date";
 import { findImageObject } from "../helper/weather";
 import { imageCodes, weatherBg } from "../utils/weather";
+import { generateMeteors } from "../helper/animation";
 
 const WeatherGrid: React.FC = () => {
   const location = useLocation();
@@ -30,14 +31,16 @@ const WeatherGrid: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+    <div className=" min-h-screen bg-gray-950 flex items-center justify-center">
       {loading ? (
         <div className="spinner-container">
           <div className="spinner"></div>
         </div>
       ) : (
         <div className="w-full m-4 flex flex-col lg:flex-row">
-          <div className="w-full">
+          <div className="w-full relative overflow-hidden">
+          {generateMeteors(20)}
+      
             <WeatherCard
               country={country.country}
               cities={country.cities}

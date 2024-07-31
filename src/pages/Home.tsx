@@ -4,6 +4,7 @@ import SelectInput from "../components/common/form/SelectInput";
 import { getCountries } from "../redux/slices/regionSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { generateMeteors } from "../helper/animation";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,27 +33,7 @@ const Home: React.FC = () => {
     }
   };
 
-  // Generate meteor elements
-  const generateMeteors = (count: number) => {
-    const meteors = [];
-    for (let i = 0; i < count; i++) {
-      const delay = Math.random() * 2;
-      const duration = 1.5 + Math.random() * 2;
-      const left = Math.random() * 100;
-      meteors.push(
-        <div
-          key={i}
-          className="meteor absolute"
-          style={{
-            left: `${left}%`,
-            animationDelay: `${delay}s`,
-            animationDuration: `${duration}s`,
-          }}
-        />
-      );
-    }
-    return meteors;
-  };
+
 
   return (
     <>
