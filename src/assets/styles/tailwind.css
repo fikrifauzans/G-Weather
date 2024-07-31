@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Optional: Custom styles for react-select */
+.css-2b097c-container {
+    color: #000;
+  }
+  
+  .css-yk16xz-control {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #fff;
+  }
+  
+  .css-1pahdxg-control {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #fff;
+  }
+  
+  .css-1uccc91-singleValue {
+    color: #fff;
+  }
