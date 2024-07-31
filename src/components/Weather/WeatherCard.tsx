@@ -4,6 +4,7 @@ import { getTime } from "../../helper/date";
 import { findImageObject } from "../../helper/weather";
 import { imageCodes } from "../../utils/weather";
 import SelectInput from "../common/form/SelectInput";
+import { useNavigate } from "react-router-dom";
 
 interface WeatherCardProps {
   country: string;
@@ -62,11 +63,13 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
     ? Math.ceil(forecastday[0].hour.length / itemsPerPage)
     : 0;
 
+  const navigate = useNavigate()
+
   return (
     <div className="lg:min-h-fit xl:min-h-fit sm:min-h-screen xl:max-w-7xl lg:max-w-7xl bg-gray-950 text-white rounded-lg p-6 shadow-lg mx-auto weather-card">
       {}
         <div className="text-4xl font-bold">
-          <span className="text-white-500">G-Weather</span>
+          <span className="text-white-500 cursor-pointer" onClick={() => navigate('/')}>G-Weather</span>
         </div>
       <div className="mt-4 flex flex-col lg:flex-row items-start justify-between">
         <div className="w-full lg:w-6/12 relative mb-4 lg:mb-0">

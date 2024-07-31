@@ -14,13 +14,13 @@ const WeatherGrid: React.FC = () => {
   const { country } = location.state || {};
   const weather = useSelector((state: RootState) => state.weather);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
+
   const [cityValue, setCityValue] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(getWeather(country.label));
-      setLoading(false);
+  
     };
     fetchData();
   }, [dispatch]);
@@ -32,14 +32,14 @@ const WeatherGrid: React.FC = () => {
 
   return (
     <div className=" min-h-screen bg-gray-950 flex items-center justify-center">
-      {loading ? (
+      {weather.loading ? (
         <div className="spinner-container">
           <div className="spinner"></div>
         </div>
       ) : (
         <div className="w-full m-4 flex flex-col lg:flex-row">
           <div className="w-full relative overflow-hidden">
-          {generateMeteors(20)}
+          {generateMeteors(30)}
       
             <WeatherCard
               country={country.country}
