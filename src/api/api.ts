@@ -21,9 +21,9 @@ const createCustomAxios = (baseURL: string) => {
 };
 
 export const fetchWeather = async (location: string) => {
-  const weatherAxios = createCustomAxios('https://api.openweathermap.org/data/2.5');
+  const weatherAxios = createCustomAxios(process.env.REACT_APP_WEATHER_API_URL as string);
   try {
-    const response = await weatherAxios.get(`/weather?q=${location}&appid=${API_KEY}&units=metric`);
+    const response = await weatherAxios.get(`/forecast.json?q=${location}&key=${API_KEY}&days=1`);
     return response.data;
   } catch (error) {
     console.error('Fetching weather data failed', error);

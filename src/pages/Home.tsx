@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import SelectInput from "../components/common/form/SelectInput";
 import { getCountries } from "../redux/slices/regionSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+
 const Home: React.FC = () => {
-  //   const [location, setLocation] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const region = useSelector((state: RootState) => state.region);
 
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);
 
-  const [county, setCountry] = useState<{
+  const [country, setCountry] = useState<{
     label: string;
     value: string;
   } | null>(null);
@@ -24,25 +25,70 @@ const Home: React.FC = () => {
     setCountry(selectedOption);
   };
 
-  return (
-    <div className="px-8 min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold">
-          find weather forecast with{" "}
-          <span className="text-blue-500">G-Weather</span>
-        </h1>
-        <p className="text-lg mt-4">search for the country you want to find</p>
-      </div>
-      <div className="w-full max-w-md mb-2">
-        <SelectInput
-          value={county}
-          onChange={handleSelectChange}
-          options={region.data}
-          placeholder="Country"
+  const handleNextClick = () => {
+
+    if (country) {
+      navigate("/weather", { state: { country: country } });
+    }
+  };
+
+  // Generate meteor elements
+  const generateMeteors = (count: number) => {
+    const meteors = [];
+    for (let i = 0; i < count; i++) {
+      const delay = Math.random() * 2;
+      const duration = 1.5 + Math.random() * 2;
+      const left = Math.random() * 100;
+      meteors.push(
+        <div
+          key={i}
+          className="meteor absolute"
+          style={{
+            left: `${left}%`,
+            animationDelay: `${delay}s`,
+            animationDuration: `${duration}s`,
+          }}
         />
+      );
+    }
+    return meteors;
+  };
+
+  return (
+    <>
+      <div className="relative px-8 min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white overflow-hidden">
+        {generateMeteors(20)}
+        <div className="text-center mb-4">
+          <h1 className="text-4xl font-bold">
+            Find weather forecast with{" "}
+            <span className="text-blue-500">G-Weather</span>
+          </h1>
+          <p className="text-lg mt-4">
+            Search for the country you want to find
+          </p>
+        </div>
+
+        <div className="w-full max-w-md mb-2">
+          <SelectInput
+            value={country}
+            onChange={handleSelectChange}
+            options={region.data}
+            placeholder="Country"
+          />
+        </div>
+        <div className="w-full flex mb-6 justify-center mt-4">
+          <button
+            onClick={handleNextClick}
+            disabled={!country}
+            className={`px-6 py-2 bg-blue-500 text-white text-sm rounded-xl  font-bold ${
+              !country ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            See Forecast
+          </button>
+        </div>
       </div>
-      {/* <Weather location={location} /> */}
-    </div>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchRegionData, fetchWeather } from '../../api/api';
+import { fetchRegionData } from '../../api/api';
 import { RegionType as RegionState } from '../types/regionType'
-import weatherSlice, { getWeather } from './weatherSlice';
+;
 
 const initialState: RegionState = {
     data: null,
@@ -12,7 +12,7 @@ const initialState: RegionState = {
 
 export const getCountries: any = createAsyncThunk(
     'region/getCountries',
-    async (location: string, { rejectWithValue }) => {
+    async () => {
         try {
             const data = await fetchRegionData('/countries')
 
@@ -42,8 +42,6 @@ const regionSlice = createSlice({
                 state.error = null;
             })
             .addCase(getCountries.fulfilled, (state, action) => {
-              
-                
                 state.loading = false;
                 state.data = mappingDataRegion(action?.payload)
             })

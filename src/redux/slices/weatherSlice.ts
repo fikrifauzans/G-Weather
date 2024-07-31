@@ -12,7 +12,9 @@ export const getWeather: any = createAsyncThunk(
   'weather/getWeather',
   async (location: string, { rejectWithValue }) => {
     try {
+    
       const data = await fetchWeather(location);
+      
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -33,6 +35,8 @@ const weatherSlice = createSlice({
       .addCase(getWeather.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+      
+        
       })
       .addCase(getWeather.rejected, (state, action) => {
         state.loading = false;
